@@ -1,27 +1,69 @@
-# Single Responsibility Principle
+# Dependency Inversion Principle
 
 ## Before
 
 ```php
-class User {
-  public information() {}
-  public sendEmail() {}
-  public orders() {}
+class MySql {
+    public function insert() {}
+    public function update() {}
+    public function delete() {}
+}
+
+class Log {
+    private $database;
+
+    public function __construct() {
+        $this->database = new MySql;
+    }
 }
 ```
 
 ## After 
 
 ```php
-class User {
-  public information() {}
+interface Database {
+    public function insert();
+    public function update();
+    public function delete();
 }
 
-class Email {
-  public send(user: User) {}
+class MySql implements Database {
+    public function insert() {}
+    public function update() {}
+    public function delete() {}
 }
 
-class Order {
-  public show(user: User) {}
+class FileSystem implements Database {
+    public function insert() {}
+    public function update() {}
+    public function delete() {}
 }
+
+class MongoDB implements Database {
+    public function insert() {}
+    public function update() {}
+    public function delete() {}
+}
+
+class Log {
+    private Database $db;
+
+    public function setDatabase(Database $db) {
+        $this->db = $db;
+    }
+
+    public function update() {
+        $this->db->update();
+    }
+}
+
+$logger = new Log();
+
+$logger->setDatabase(new MongoDB);
+
+$logger->setDatabase(new FileSystem);
+
+$logger->setDatabase(new MySql);
+
+$logger->update();
 ```
