@@ -2,28 +2,10 @@
 
 ## Single Responsibility Principle
 
-Convert
+## Open/Closed Principle
 
-```php
-class User {
-  public information() {}
-  public sendEmail() {}
-  public orders() {}
-}
-```
+## Liskov Substitution Principle
 
-to 
+## Interface Segregation Principle
 
-```php
-class User {
-  public information() {}
-}
-
-class Email {
-  public send(user: User) {}
-}
-
-class Order {
-  public show(user: User) {}
-}
-```
+## Dependency Inversion Principle
