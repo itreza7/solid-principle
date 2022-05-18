@@ -2,8 +2,6 @@
 
 ## Basis
 
-We have this class
-
 ```php
 class A { ... }
 
@@ -30,32 +28,6 @@ y = new B();
 z = new B();
 
 ```
-We 
-
-```php
-class Hello {
-    public function say($lang) {
-        if ($lang == 'pr') {
-            return 'درود';
-        }
-        elseif ($lang == 'en') {
-            return 'Hi';
-        }
-        elseif ($lang == 'fr') {
-            return 'Bonjour';
-        }
-        elseif ($lang == 'de') {
-            return 'Hallo';
-        }
-    }
-}
-
-$hello = new Hello();
-echo $hello->say('de');
-
-```
-
-
 
 
 ## Wrong 
