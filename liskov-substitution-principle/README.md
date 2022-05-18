@@ -35,11 +35,11 @@ z = new B();
 ```php
 class Note {
 
-    public constructor($id) {
+    public function __construct($id) {
         // ...
     }
 
-    public save($text): void {
+    public function save($text) {
         // save process
     }
 }
@@ -48,7 +48,7 @@ $note = new Note(429);
 $note->save("Let's do this!");
 
 class ReadonlyNote extends Note {
-    public save($text): void {
+    public function save($text) {
         throw new Error("Can't update readonly notes");
     }
 }
@@ -62,13 +62,13 @@ $note->save("Let's do this!");
 
 ```php
 class Note {
-    public __constructor($id) {
+    public function __construct($id) {
         // ...
     }
 }
 
 class WritableNote extends Note {
-    public save($text): void {
+    public function save($text) {
         // save process
     }
 }
